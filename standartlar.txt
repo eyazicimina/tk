@@ -1,0 +1,12 @@
+#! https://nominatim.org/release-docs/develop/api/Reverse/
+"""
+zoom 	address detail
+3 	country
+5 	state
+8 	county
+10 	city
+14 	suburb
+16 	major streets
+17 	major and minor streets
+18 	building
+"""
