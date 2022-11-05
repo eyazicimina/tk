@@ -32,8 +32,7 @@ def sorgula( girdi, ekstra = 10 ):
             loc = nominatim.query( girdi[0] )
             query = overpassQueryBuilder(area=loc, elementType='node', selector=girdi[1], out='body')
             sonuc = overpass.query(query)
-            #!!!! problem
-            return özellikÇıkar( sonuc )
+            return özellikÇıkar( sonuc, ["timestamp_area_base"] )
     raise Exception("Bilinmeyen format")
 
 
