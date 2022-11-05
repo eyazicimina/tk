@@ -94,3 +94,15 @@ print(df)
 
 
 
+
+
+temelSorgu = pd.DataFrame(columns =
+                          ["temelSorguId", "cacheTimestamp", "cacheVersion", "queryString", "other"])
+alan = pd.DataFrame(columns =
+                    ["alanId", "temelSorguId", "id", "areaId", "typeIdShort", "type", "typeId"])
+adres = pd.DataFrame(columns =
+                     ["adresId", "alanId", "address", "displayName", "isReverse", "wkt"])
+node = pd.DataFrame(columns =
+                    ["nodeId", "alanId", "countNodes", "generator", "nodes", "version",
+                     "valid", "copyright"])
+
