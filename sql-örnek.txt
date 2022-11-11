@@ -1,0 +1,3 @@
+https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/sample/clubdata_ddl.sql
+
+https://raw.githubusercontent.com/yugabyte/yugabyte-db/master/sample/clubdata_data.sql
