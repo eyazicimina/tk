@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tapu Kadastro Genel Mudurlugu Gelismis Arama Sistemi Ana Sayfa</title>
+    <style type="text/css">
+        body{font-family: Arial; font-size:18px;}
+    </style>
+</head>
+<body>
+
+    <h1>
+        girdiler
+    </h1>
+    <table>
+        <tr>
+            <form action="text">
+                <td>Geo string<br>koordinat veya polygon</td>
+                <td><input id="geostring" name="geostring"></td>
+                <td>
+                    <input type="Checkbox" id="astable" name="astable"> Tablo olarak goster <br>
+                    <input type="Checkbox" id="asmap" name="asmap"> Harita olarak goster <br>
+                </td>
+                <td><input type="submit" value="calistir"></td>
+
+            </form>
+        </tr>
+        <tr>
+
+            <form action="file" enctype="multipart/form-data" method="post">
+                <td>Kaynak dosya</td>
+                <td><input id="file" name="file" type="file"></td>
+                <td>
+                    <input type="Checkbox" id="fileastable" name="fileastable"> Tablo olarak goster <br>
+                    <input type="Checkbox" id="fileasmap" name="fileasmap"> Harita olarak goster <br>
+                </td>
+                <td><input type="submit" value="calistir"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="sql">
+                <td>SQL ifadesi</td>
+                <td><textarea id="sqlstatement" name="sqlstatement"></textarea></td>
+                <td>
+                    <input type="Checkbox" id="sqlasmap" name="sqlasmap"> Harita olarak goster <br>
+                    <input type="Checkbox" id="sqlastable" name="sqlastable"> Tablo olarak goster <br>
+                </td>
+                <td><input type="submit" value="calistir"></td>
+            </form>
+        </tr>
+    </table>
+
+
+</body>
+</html>
