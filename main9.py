@@ -128,9 +128,9 @@ def kesisenBul( cizimler: pd.DataFrame, esik_degeri: float = 0.0001 ) -> list:
                 # Komsu olanlar, yan yana olanlar, sinirlari birbirine degenler dahi "INTERSECTS" olur
                 # Iki tane birbirinden uzak ve degmeyen polygon, "INTERSECTS" olmaz!
                 # Eger intersects ediyorsa
-                if Polygon.intersects( rowi, rowj ):
+                if Polygon.intersects( rowi, rowj ):  #! ST_Intersects
                     # Kesisim bolgesini al(! NOT: bu da bir polygon olur)
-                    intersection = Polygon.intersection( rowi, rowj )
+                    intersection = Polygon.intersection( rowi, rowj ) # ! ST_Intersection
                     # Eger kesisen bir alan var ise!!
                     if intersection.area > esik_degeri:
                         # sonuc listesine ekle
@@ -162,11 +162,37 @@ cizimler['tapucinsaciklama'] = cizimler['tapucinsaciklama'].apply(lambda value: 
 
 bastan5tane = list(cizimler['tapucinsaciklama'].value_counts().to_dict().keys())[0:5]
 
+"""
 for b in bastan5tane:
     geometriCizdir( arkazemin, cizimler,
                     filtre = "(tapucinsaciklama == '" + b + "')",
                     renk = random.choice(ayarlar.renkler) )
+    
+"""
 # plt.show()
 
 # Kesisen alanlari bul !
 # print(kesisenBul(cizimler))
+print(cizimler)
+"""
+geom = cizimler.iloc[0]['geom']
+print("Merkez", geom.centroid, type(geom.centroid)) # ST_Centroid
+print("Alan", geom.area, type(geom.area)) # ST_Area
+
+nokta = geom.centroid
+print( geom.contains(nokta) ) #! ST_Contains
+
+
+for i in range( len( cizimler )):
+    geom = cizimler.iloc[i]['geom']
+    nokta = geom.centroid
+    if not geom.contains(nokta):
+        print("Merkez, kendi icinde degil!", nokta, geom, i)
+"""
+
+cizimler['geom'] = cizimler['geom'].apply(lambda value: shapely.wkt.loads(value))
+cizimler['duzgun'] = cizimler.apply( lambda row: row['geom'].contains( row['geom'].centroid ), axis=1 )
+
+
+geometriCizdir( arkazemin, cizimler[ cizimler['duzgun'] == False ] )
+plt.show()
